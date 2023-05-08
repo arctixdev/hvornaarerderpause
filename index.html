@@ -1,61 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hvornår er der pause?</title>
-    <script>
-        function getTime() {
-            var today = new Date();
-            var day = today.getDay()
-            var nextMonday = new Date();
-
-            if (day != 1) {
-                nextMonday.setDate(today.getDate() + (1 - day + 7) % 7);
-            }
-
-            const date_future = nextMonday.setHours(18,00,00,00);
-
-            let seconds = Math.floor((date_future - today) / 1000);
-            let minutes = Math.floor(seconds / 60);
-            let hours = Math.floor(minutes / 60);
-            const days = Math.floor(hours / 24);
-
-            hours = hours - days * 24;
-            minutes = minutes - days * 24 * 60 - hours * 60;
-            seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
-
-            return {
-                seconds: seconds,
-                minutes: minutes,
-                hours: hours,
-                days: days
-            };
-        }
-
-        function updateTime() {
-            let t = getTime();
-            const time = document.getElementById('time');
-
-            console.log(t.days.toString() + " " + t.hours.toString() + " " + t.minutes.toString());
-
-
-            if (t.hours == 22 && t.days == -1 && t.minutes == 10) {
-                time.innerHTML = "Der er pause nu!";
-            } else if (t.hours > 18) {
-                time.innerHTML = "Der er først coding pirates igen på mandag";
-            }
-            
-            if (t.hours < 17 & t.days <= 0 & t.minutes < 50) {
-                time.innerHTML = `Der er pause om: ${t.minutes} minutter og ${t.seconds} sekunder`;
-            }
-        }
-
-        setInterval(updateTime, 1);
-    </script>
-</head>
-<body>
-    <h1 id="time"></h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Hvornår er der pause?</title>
+    </head>
+    <body>
+        <time class="hidden" id="time">
+            <time class="border">
+                <span>Der er pause om:</span>
+            </time>
+            <time class="border">
+                <!-- <span>Tid til pause: </span> -->
+                <span id="hours">00</span>
+                <span class="blink">:</span>
+                <span id="minutes">00</span>
+            </time>        
+        </time>
+        <time class="hidden border" id="now">
+            <span>Nu er der pause!</span>
+        </time>
+        <time class="border hidden" id="over">
+            <span>Der er først coding pirates igen på Mandag...</span>
+        </time>
+    </body>
+    <script src="index.js"></script>
 </html>
