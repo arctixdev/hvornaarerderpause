@@ -7,7 +7,7 @@ function getTime() {
         nextMonday.setDate(today.getDate() + (1 - day + 7) % 7);
     }
 
-    const date_future = nextMonday.setHours(18,00,00,00);
+    const date_future = nextMonday.setHours(17,50,00,00);
 
     let seconds = Math.floor((date_future - today) / 1000);
     let minutes = Math.floor(seconds / 60);
@@ -29,25 +29,31 @@ function getTime() {
 function updateTime() {
     let t = getTime();
 
-    console.log(t.days.toString() + " " + t.hours.toString() + " " + t.minutes.toString());
-
-    if (t.hours == 22 && t.days == -1 && t.minutes == 10) {
+    if (t.hours == 21 && t.days == -1 && t.minutes > 49) {
         now.classList.remove("hidden")
         time.classList.add("hidden")
         over.classList.add("hidden")
-    } else if (t.hours > 18 | t.days > 0) {
+        week.classList.add("hidden")
+    } else if(t.days != -1) {
+        now.classList.add("hidden")
+        time.classList.add("hidden")
+        over.classList.add("hidden")
+        week.classList.remove("hidden")
+    } else {
         now.classList.add("hidden")
         time.classList.add("hidden")
         over.classList.remove("hidden")
+        week.classList.add("hidden")
     }
-    if (t.hours < 23 & t.days == -1 & t.minutes < 50) {
+    if (t.hours < 24 && t.days == -1 && t.minutes < 10) {
         now.classList.add("hidden")
         over.classList.add("hidden")
         time.classList.remove("hidden")
+        week.classList.add("hidden")
         hours.innerHTML = t.minutes
         minutes.innerHTML = t.seconds
     }
-    setTimeout(updateTime, 1000)
+    setTimeout(updateTime, 100)
 }
 
 hours = document.querySelector('#hours');
@@ -55,5 +61,6 @@ minutes = document.querySelector('#minutes');
 now = document.getElementById("now");
 time = document.getElementById("time");
 over = document.getElementById("over");
+week = document.getElementById("week");
 
 updateTime()
