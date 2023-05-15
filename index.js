@@ -29,6 +29,8 @@ function getTime() {
 function updateTime() {
     let t = getTime();
 
+    console.log(t.days.toString() + " " + t.hours.toString() + " " + t.minutes.toString());
+
     if (t.hours == 21 && t.days == -1 && t.minutes > 49) {
         now.classList.remove("hidden")
         time.classList.add("hidden")
@@ -45,7 +47,7 @@ function updateTime() {
         over.classList.remove("hidden")
         week.classList.add("hidden")
     }
-    if (t.hours < 24 && t.days == -1 && t.minutes < 10) {
+    if (t.hours < 24 && t.days == 0) {
         now.classList.add("hidden")
         over.classList.add("hidden")
         time.classList.remove("hidden")
