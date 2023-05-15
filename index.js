@@ -38,7 +38,7 @@ function updateTime() {
         time.classList.add("hidden")
         over.classList.add("hidden")
         week.classList.add("hidden")
-    } else if(t.days != -1) {
+    } else if(t.days == -1) {
         now.classList.add("hidden")
         time.classList.add("hidden")
         over.classList.add("hidden")
