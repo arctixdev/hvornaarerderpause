@@ -33,12 +33,12 @@ function updateTime() {
 
     console.log(t.days.toString() + " " + t.hours.toString() + " " + t.minutes.toString());
 
-    if (t.hours == 21 && t.days == -1 && t.minutes > 49) {
+    if (t.hours == 23 && t.days == -1 && t.minutes > 49) {
         now.classList.remove("hidden")
         time.classList.add("hidden")
         over.classList.add("hidden")
         week.classList.add("hidden")
-    } else if(t.days == -1) {
+    } else if(t.days != -1) {
         now.classList.add("hidden")
         time.classList.add("hidden")
         over.classList.add("hidden")
