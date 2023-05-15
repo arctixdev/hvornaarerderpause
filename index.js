@@ -7,7 +7,7 @@ function getTime() {
         nextMonday.setDate(today.getDate() + (1 - day + 7) % 7);
     }
 
-    const date_future = nextMonday.setHours(18,15,00,00);
+    const date_future = nextMonday.setHours(17,50,00,00);
 
     let seconds = Math.floor((date_future - today) / 1000);
     let minutes = Math.floor(seconds / 60);
