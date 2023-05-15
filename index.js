@@ -18,6 +18,8 @@ function getTime() {
     minutes = minutes - days * 24 * 60 - hours * 60;
     seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
 
+    console.log(seconds)
+
     return {
         seconds: seconds,
         minutes: minutes,
