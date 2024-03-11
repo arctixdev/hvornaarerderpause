@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    font-size: 50px;
+    font-size: 120px;
     font-weight: 800;
     color: #FFFFFF;
     margin: 0 auto;
@@ -10,14 +10,16 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-.border {
-    border: 10px solid #FFFFFF;
-}
+
 
 time {
     margin-top: 128px;
     padding: 20px 110px;
     background: rgba(0, 0, 0, 0.1);
+}
+
+.clock {
+  text-shadow: 7px 5px 0px rgb(85, 85, 85), 12px 8px 1px rgb(55, 55, 55);
 }
 
 .wobble {
