@@ -1,15 +1,22 @@
+forceShowTime = false;
+forceMiliseconds = false;
+
 function getTime() {
     var today = new Date();
-    var day = today.getDay()
+    var thisDay = today.getDay()
     var nextMonday = new Date();
 
-    if (day != 1) {
-        nextMonday.setDate(today.getDate() + (1 - day + 7) % 7);
+    // Make sure the date is actually a monday
+    if (thisDay != 1) {
+        nextMonday.setDate(today.getDate() + (1 - thisDay + 7) % 7);
     }
 
-    const date_future = nextMonday.setHours(17,50,00,00);
+    // Set the time to 17:50
+    const date_future = nextMonday.setHours(17,50,0,1);
 
-    let seconds = Math.floor((date_future - today) / 1000);
+    // Calculate the time left
+    let miliseconds = date_future - today;
+    let seconds = Math.floor(miliseconds / 1000);
     let minutes = Math.floor(seconds / 60);
     let hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
@@ -17,12 +24,15 @@ function getTime() {
     hours = hours - days * 24;
     minutes = minutes - days * 24 * 60 - hours * 60;
     seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
+    miliseconds = miliseconds - days * 24 * 60 * 60 * 1000 - hours * 60 * 60 * 1000 - minutes * 60 * 1000 - seconds * 1000;
     
+    // Add a leading zero if the number is less than 10
     if(seconds < 10) { seconds = "0" + seconds;}
-    
+
     console.log(seconds)
 
     return {
+        miliseconds: miliseconds,
         seconds: seconds,
         minutes: minutes,
         hours: hours,
@@ -31,42 +41,56 @@ function getTime() {
 }
 
 function updateTime() {
+    // Get the time left
     let t = getTime();
 
     console.log(t.days.toString() + " " + t.hours.toString() + " " + t.minutes.toString());
 
-    if (t.hours == 23 && t.days == -1 && t.minutes > 49) {
-        now.classList.remove("hidden")
-        time.classList.add("hidden")
-        over.classList.add("hidden")
-        week.classList.add("hidden")
-    } else if(t.days != -1) {
-        now.classList.add("hidden")
-        time.classList.add("hidden")
-        over.classList.add("hidden")
-        week.classList.remove("hidden")
-    } else {
-        now.classList.add("hidden")
-        time.classList.add("hidden")
-        over.classList.remove("hidden")
-        week.classList.add("hidden")
-    }
-    if (t.hours < 24 && t.days == 0) {
-        now.classList.add("hidden")
-        over.classList.add("hidden")
-        time.classList.remove("hidden")
-        week.classList.add("hidden")
+    // Update the time left
+    pauseNow.classList.add("hidden")
+    pauseIncomming.classList.add("hidden")
+    notAnymoreToday.classList.add("hidden")
+    thatsItForNow.classList.add("hidden")
+    preciseTimer.classList.add("hidden")
+    let updateInterval = 100;
+    if (forceShowTime) {
+        pauseIncomming.classList.remove("hidden")
         hours.innerHTML = t.minutes
         minutes.innerHTML = t.seconds
+        if(t.seconds < 10 || forceMiliseconds)
+        {
+            updateInterval = 1;
+            preciseTimer.classList.remove("hidden");
+            preciseTimer.innerHTML = "." + Math.floor(t.miliseconds/10);
+        }
     }
-    setTimeout(updateTime, 100)
+    else if (t.hours == 23 && t.days == -1 && t.minutes > 49) {
+        pauseNow.classList.remove("hidden")
+    } else if(t.days != -1) {
+        thatsItForNow.classList.remove("hidden")
+    } else {
+        notAnymoreToday.classList.remove("hidden")
+    }
+    if (t.hours < 24 && t.days == 0) {
+        pauseIncomming.classList.remove("hidden")
+        hours.innerHTML = t.minutes
+        minutes.innerHTML = t.seconds
+        if(t.seconds < 10 || forceMiliseconds)
+        {
+            updateInterval = 1;
+            preciseTimer.classList.remove("hidden");
+            preciseTimer.innerHTML = "." + Math.floor(t.miliseconds/10);
+        }
+    }
+    setTimeout(updateTime, updateInterval)
 }
 
 hours = document.querySelector('#hours');
 minutes = document.querySelector('#minutes');
-now = document.getElementById("now");
-time = document.getElementById("time");
-over = document.getElementById("over");
-week = document.getElementById("week");
+pauseNow = document.getElementById("pauseNow");
+pauseIncomming = document.getElementById("pauseIncomming");
+preciseTimer = document.getElementById("preciseTimer");
+notAnymoreToday = document.getElementById("notAnymoreToday");
+thatsItForNow = document.getElementById("thatsItForNow");
 
 updateTime()

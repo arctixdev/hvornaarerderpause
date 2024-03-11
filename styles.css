@@ -27,6 +27,19 @@ time {
     -webkit-animation: wobble 0.8s both;
             animation: wobble 0.8s both;
 }
+
+.no_whitespace {
+  white-space-collapse: discard;
+  white-space: nowrap;
+  padding-right: 0;
+  /*font-size: 0;*/
+  flex-direction: row;
+  margin-right: 0;
+}
+
+.no_whitespace > span {
+  font-size: 120px;
+}
   
 @-webkit-keyframes wobble {
     0%, 100% {

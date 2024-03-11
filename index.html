@@ -8,23 +8,29 @@
         <title>Hvornår er der pause?</title>
     </head>
     <body>
-        <time class="hidden" id="time">
+        <time class="hidden" id="pauseIncomming">
             <time class="border">
                 <div>Der er pause om:</div>
             </time>
             <time class="border clock">
-                    <span id="hours">00</span>
-                    <span class="blink">:</span>
-                    <span id="minutes">00</span>
+                <span id="hours">0</span>
+                <span class="blink">:</span>
+                <span id="minutes">00</span><span id="preciseTimer">00</span>
             </time>        
         </time>
-        <time class="hidden border" id="now">
+        <time class="hidden border" id="pauseNow">
             <span>Nu er der pause!</span>
         </time>
-        <time class="border hidden" id="week">
-            <span>Der er først coding pirates igen på Mandag...</span>
+        <time class="border hidden" id="thatsItForNow">
+            <div>Der er først coding pirates igen på Mandag...</div>
+            <span>eller om: </span>
+            <span>0</span><span> dage, </span>
+            <span id="hours">00</span>
+            <span class="blink">:</span>
+            <span id="minutes">00</span>
+            
         </time>
-        <time class="border hidden" id="over">
+        <time class="border hidden" id="notAnymoreToday">
             <span>Pausen er ovre nu....</span>
         </time>
     </body>
