@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    font-size: 120px;
+    font-size: 4vw;
     font-weight: 800;
     color: #FFFFFF;
     margin: 0 auto;
@@ -13,14 +13,14 @@ body {
 
 
 time {
-    margin-top: 128px;
-    padding: 20px 110px;
+    margin-top: 5vh;
+    padding: 3vh 2vw;
     background: rgba(0, 0, 0, 0.1);
-    text-shadow: 8px 6px 1px rgb(55, 55, 55);
+    text-shadow: 0.7vw 0.4vh 0.1vw rgb(55, 55, 55);
 }
 
 .clock {
-  text-shadow: 7px 5px 0px rgb(85, 85, 85), 12px 8px 1px rgb(55, 55, 55), 15px 11px 2px rgb(35, 35, 35);
+  text-shadow: 0.4vw 0.2vh 0px rgb(85, 85, 85), 0.8vw 0.5vh 0.1vw rgb(55, 55, 55), 1.3vw 0.8vh 0.3vw rgb(35, 35, 35);
 }
 
 .wobble {
@@ -91,8 +91,8 @@ time {
     }
 }
 .blink {
-    -webkit-animation: blink 2s steps(2, start) infinite;
-        animation: blink 2s steps(2, start) infinite;
+    -webkit-animation: blink 1s steps(1, start) infinite;
+        animation: blink 1s steps(1, start) infinite;
 }
 
 .hidden {
