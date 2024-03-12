@@ -74,14 +74,19 @@ function updateTime() {
         NextTimeMinutes.classList.add("hidden");
         NextTimeSeconds.classList.add("hidden");
 
+        
         NextTimeDaysContainer.classList.add("hidden");
+
         NextTimeHoursContainer.classList.add("hidden");
         NextTimeHoursContainerEnd.classList.add("hidden");
+
         NextTimeMinutesContainer.classList.add("hidden");
         NextTimeMinutesContainerEnd.classList.add("hidden");
+
         NextTimeSecondsContainer.classList.add("hidden");
         NextTimeSecondsContainerEnd.classList.add("hidden");
 
+        
         if(t.days != 0)
         {
             NextTimeDays.classList.remove("hidden");

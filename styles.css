@@ -115,13 +115,14 @@ time {
 {
   position: relative;
   background-color: #442929;
-  height: 85%;
-  top: 4%;
+  height: 100%;
+  width: 15%;
+  top: -4%;
 }
 
 .topbar button.settings
 {
-  left: 80vw;
+  left: 85vw;
   text-align: center;
   background-color: rgb(94, 52, 192);
 }
