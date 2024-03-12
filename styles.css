@@ -113,11 +113,11 @@ time {
 
 .topbar button
 {
-  position: relative;
+  position: absolute;
   background-color: #442929;
   height: 100%;
   width: 15%;
-  top: -4%;
+  top: 0px;
 }
 
 .topbar button.settings
