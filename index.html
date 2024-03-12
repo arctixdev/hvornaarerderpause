@@ -8,6 +8,9 @@
         <title>Hvornår er der pause?</title>
     </head>
     <body>
+        <div class="topbar">
+            <button type="button" class="settings">settings icon</button>
+        </div>
         <time class="hidden" id="pauseIncomming">
             <time class="border">
                 <div>Der er pause om:</div>
@@ -25,14 +28,13 @@
             <div>Der er først coding pirates igen på Mandag...</div>
             <span>eller om: </span>
             <span id="NextTimeDays" class="clock">0</span>
-            <span> dage, </span>
+            <span id="NextTimeDaysContainer"> dage</span><span id="NextTimeHoursContainer">, </span>
             <span id="NextTimeHours" class="clock">0</span>
-            <span>timer,</span>
+            <span id="NextTimeHoursContainerEnd">timer</span><span id="NextTimeMinutesContainer">,</span>
             <span id="NextTimeMinutes" class="clock">0</span>
-            <span>minuter, og</span>
-            <span class="blink"></span>
+            <span id="NextTimeMinutesContainerEnd">minuter</span><span id="NextTimeSecondsContainer">, og</span>
             <span id="NextTimeSeconds" class="clock">00</span>
-            <span>sekunder</span>
+            <span id="NextTimeSecondsContainerEnd">sekunder</span>
             
         </time>
         <time class="border hidden" id="notAnymoreToday">

@@ -65,13 +65,54 @@ function updateTime() {
         }
     }
     else if (t.hours == 23 && t.days == -1 && t.minutes > 49) {
-        pauseNow.classList.remove("hidden")
+        pauseNow.classList.remove("hidden");
     } else if(t.days != -1) {
-        thatsItForNow.classList.remove("hidden")
-        NextTimeDays.innerHTML = t.days;
-        NextTimeHours.innerHTML = t.hours;
-        NextTimeMinutes.innerHTML = t.minutes;
-        NextTimeSeconds.innerHTML = t.seconds;
+        thatsItForNow.classList.remove("hidden");
+
+        NextTimeDays.classList.add("hidden");
+        NextTimeHours.classList.add("hidden");
+        NextTimeMinutes.classList.add("hidden");
+        NextTimeSeconds.classList.add("hidden");
+
+        NextTimeDaysContainer.classList.add("hidden");
+        NextTimeHoursContainer.classList.add("hidden");
+        NextTimeHoursContainerEnd.classList.add("hidden");
+        NextTimeMinutesContainer.classList.add("hidden");
+        NextTimeMinutesContainerEnd.classList.add("hidden");
+        NextTimeSecondsContainer.classList.add("hidden");
+        NextTimeSecondsContainerEnd.classList.add("hidden");
+
+        if(t.days != 0)
+        {
+            NextTimeDays.classList.remove("hidden");
+            NextTimeDaysContainer.classList.remove("hidden");
+
+            NextTimeDays.innerHTML = t.days;
+        }
+        if(t.hours != 0)
+        {
+            NextTimeHours.classList.remove("hidden");
+            NextTimeHoursContainer.classList.remove("hidden");
+            NextTimeHoursContainerEnd.classList.remove("hidden");
+
+            NextTimeHours.innerHTML = t.hours;
+        }
+        if(t.minutes != 0)
+        {
+            NextTimeMinutes.classList.remove("hidden");
+            NextTimeMinutesContainer.classList.remove("hidden");
+            NextTimeMinutesContainerEnd.classList.remove("hidden");
+
+            NextTimeMinutes.innerHTML = t.minutes;
+        }
+        if(t.seconds != 0)
+        {
+            NextTimeSeconds.classList.remove("hidden");
+            NextTimeSecondsContainer.classList.remove("hidden");
+            NextTimeSecondsContainerEnd.classList.remove("hidden");
+
+            NextTimeSeconds.innerHTML = t.seconds;
+        }
     } else {
         notAnymoreToday.classList.remove("hidden")
     }
@@ -90,9 +131,16 @@ function updateTime() {
 }
 
 NextTimeDays = document.querySelector('#NextTimeDays');
+NextTimeDaysContainer = document.querySelector('#NextTimeDaysContainer');
 NextTimeHours = document.querySelector('#NextTimeHours');
+NextTimeHoursContainer = document.querySelector('#NextTimeHoursContainer');
+NextTimeHoursContainerEnd = document.querySelector('#NextTimeHoursContainer');
 NextTimeMinutes = document.querySelector('#NextTimeMinutes');
+NextTimeMinutesContainer = document.querySelector('#NextTimeMinutesContainer');
+NextTimeMinutesContainerEnd = document.querySelector('#NextTimeMinutesContainerEnd');
 NextTimeSeconds = document.querySelector('#NextTimeSeconds');
+NextTimeSecondsContainer = document.querySelector('#NextTimeSecondsContainer');
+NextTimeSecondsContainerEnd = document.querySelector('#NextTimeSecondsContainerEnd');
 
 minutes = document.querySelector('#minutes');
 seconds = document.querySelector('#seconds');

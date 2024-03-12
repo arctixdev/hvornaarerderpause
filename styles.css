@@ -4,6 +4,7 @@ body {
     font-weight: 800;
     color: #FFFFFF;
     margin: 0 auto;
+    margin-top: 0%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +39,7 @@ time {
 }
 
 .no_whitespace > span {
-  font-size: 120px;
+  font-size: 4vw;
 }
   
 @-webkit-keyframes wobble {
@@ -98,4 +99,29 @@ time {
 .hidden {
     display: none;
     visibility: hidden;
+}
+
+.topbar
+{
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  height: 8%;
+  background-color: #5c5c5c;
+  /*padding-left: 1vw; padding-right: 1vw;*/
+}
+
+.topbar button
+{
+  position: relative;
+  background-color: #442929;
+  height: 85%;
+  top: 4%;
+}
+
+.topbar button.settings
+{
+  left: 80vw;
+  text-align: center;
+  background-color: rgb(94, 52, 192);
 }
