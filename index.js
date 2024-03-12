@@ -55,8 +55,8 @@ function updateTime() {
     let updateInterval = 100;
     if (forceShowTime) {
         pauseIncomming.classList.remove("hidden")
-        hours.innerHTML = t.minutes
-        minutes.innerHTML = t.seconds
+        minutes.innerHTML = t.minutes
+        seconds.innerHTML = t.seconds
         if(t.seconds < 10 || forceMiliseconds)
         {
             updateInterval = 1;
@@ -68,13 +68,17 @@ function updateTime() {
         pauseNow.classList.remove("hidden")
     } else if(t.days != -1) {
         thatsItForNow.classList.remove("hidden")
+        NextTimeDays.innerHTML = t.days;
+        NextTimeHours.innerHTML = t.hours;
+        NextTimeMinutes.innerHTML = t.minutes;
+        NextTimeSeconds.innerHTML = t.seconds;
     } else {
         notAnymoreToday.classList.remove("hidden")
     }
     if (t.hours < 24 && t.days == 0) {
         pauseIncomming.classList.remove("hidden")
-        hours.innerHTML = t.minutes
-        minutes.innerHTML = t.seconds
+        minutes.innerHTML = t.minutes
+        seconds.innerHTML = t.seconds
         if(t.seconds < 10 || forceMiliseconds)
         {
             updateInterval = 1;
@@ -85,8 +89,13 @@ function updateTime() {
     setTimeout(updateTime, updateInterval)
 }
 
-hours = document.querySelector('#hours');
+NextTimeDays = document.querySelector('#NextTimeDays');
+NextTimeHours = document.querySelector('#NextTimeHours');
+NextTimeMinutes = document.querySelector('#NextTimeMinutes');
+NextTimeSeconds = document.querySelector('#NextTimeSeconds');
+
 minutes = document.querySelector('#minutes');
+seconds = document.querySelector('#seconds');
 pauseNow = document.getElementById("pauseNow");
 pauseIncomming = document.getElementById("pauseIncomming");
 preciseTimer = document.getElementById("preciseTimer");
