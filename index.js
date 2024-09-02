@@ -1,4 +1,5 @@
 forceShowTime = false;
+forceShowTimeTilNext = true;
 forceMiliseconds = false;
 
 function getTime() {
@@ -53,7 +54,7 @@ function updateTime() {
     thatsItForNow.classList.add("hidden")
     preciseTimer.classList.add("hidden")
     let updateInterval = 100;
-    if (forceShowTime) {
+    if (forceShowTime && !forceShowTimeTilNext) {
         pauseIncomming.classList.remove("hidden")
         minutes.innerHTML = t.minutes
         seconds.innerHTML = t.seconds
@@ -64,9 +65,9 @@ function updateTime() {
             preciseTimer.innerHTML = "." + Math.floor(t.miliseconds/10);
         }
     }
-    else if (t.hours == 23 && t.days == -1 && t.minutes > 49) {
+    else if (t.hours == 23 && t.days == -1 && t.minutes > 49 && !forceShowTimeTilNext) {
         pauseNow.classList.remove("hidden");
-    } else if(t.days != -1) {
+    } else if(t.days != -1 || forceShowTimeTilNext) { 
         thatsItForNow.classList.remove("hidden");
 
         NextTimeDays.classList.add("hidden");
@@ -76,15 +77,16 @@ function updateTime() {
 
         
         NextTimeDaysContainer.classList.add("hidden");
-
         NextTimeHoursContainer.classList.add("hidden");
-        NextTimeHoursContainerEnd.classList.add("hidden");
-
         NextTimeMinutesContainer.classList.add("hidden");
-        NextTimeMinutesContainerEnd.classList.add("hidden");
-
         NextTimeSecondsContainer.classList.add("hidden");
-        NextTimeSecondsContainerEnd.classList.add("hidden");
+
+        commaBeforeHours.classList.add("hidden");
+        commaBeforeMinutes.classList.add("hidden");
+        commaBeforeSeconds.classList.add("hidden");
+
+        commaBeforeMinutes.classList.add("hidden");
+
 
         
         if(t.days != 0)
@@ -96,25 +98,25 @@ function updateTime() {
         }
         if(t.hours != 0)
         {
+            commaBeforeHours.classList.remove("hidden");
             NextTimeHours.classList.remove("hidden");
             NextTimeHoursContainer.classList.remove("hidden");
-            NextTimeHoursContainerEnd.classList.remove("hidden");
 
             NextTimeHours.innerHTML = t.hours;
         }
         if(t.minutes != 0)
         {
+            commaBeforeMinutes.classList.remove("hidden");
             NextTimeMinutes.classList.remove("hidden");
             NextTimeMinutesContainer.classList.remove("hidden");
-            NextTimeMinutesContainerEnd.classList.remove("hidden");
 
             NextTimeMinutes.innerHTML = t.minutes;
         }
         if(t.seconds != 0)
         {
+            commaBeforeSeconds.classList.remove("hidden");
             NextTimeSeconds.classList.remove("hidden");
             NextTimeSecondsContainer.classList.remove("hidden");
-            NextTimeSecondsContainerEnd.classList.remove("hidden");
 
             NextTimeSeconds.innerHTML = t.seconds;
         }
@@ -135,17 +137,20 @@ function updateTime() {
     setTimeout(updateTime, updateInterval)
 }
 
+
+commaBeforeHours = document.querySelector('#commaBeforeHours');
+commaBeforeMinutes = document.querySelector('#commaBeforeMinutes');
+commaBeforeSeconds = document.querySelector('#commaBeforeSeconds');
+
 NextTimeDays = document.querySelector('#NextTimeDays');
-NextTimeDaysContainer = document.querySelector('#NextTimeDaysContainer');
 NextTimeHours = document.querySelector('#NextTimeHours');
-NextTimeHoursContainer = document.querySelector('#NextTimeHoursContainer');
-NextTimeHoursContainerEnd = document.querySelector('#NextTimeHoursContainer');
 NextTimeMinutes = document.querySelector('#NextTimeMinutes');
-NextTimeMinutesContainer = document.querySelector('#NextTimeMinutesContainer');
-NextTimeMinutesContainerEnd = document.querySelector('#NextTimeMinutesContainerEnd');
 NextTimeSeconds = document.querySelector('#NextTimeSeconds');
+
+NextTimeDaysContainer = document.querySelector('#NextTimeDaysContainer');
+NextTimeHoursContainer = document.querySelector('#NextTimeHoursContainer');
+NextTimeMinutesContainer = document.querySelector('#NextTimeMinutesContainer');
 NextTimeSecondsContainer = document.querySelector('#NextTimeSecondsContainer');
-NextTimeSecondsContainerEnd = document.querySelector('#NextTimeSecondsContainerEnd');
 
 minutes = document.querySelector('#minutes');
 seconds = document.querySelector('#seconds');

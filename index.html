@@ -27,14 +27,27 @@
         <time class="border hidden" id="thatsItForNow">
             <div>Der er først coding pirates igen på Mandag...</div>
             <span>eller om: </span>
-            <span id="NextTimeDays" class="clock">0</span>
-            <span id="NextTimeDaysContainer"> dage</span><span id="NextTimeHoursContainer">, </span>
-            <span id="NextTimeHours" class="clock">0</span>
-            <span id="NextTimeHoursContainerEnd">timer</span><span id="NextTimeMinutesContainer">,</span>
-            <span id="NextTimeMinutes" class="clock">0</span>
-            <span id="NextTimeMinutesContainerEnd">minuter</span><span id="NextTimeSecondsContainer">, og</span>
-            <span id="NextTimeSeconds" class="clock">00</span>
-            <span id="NextTimeSecondsContainerEnd">sekunder</span>
+            <ul id="timeTilNextList">
+                <li>
+                    <span id="NextTimeDays" class="clock">0</span>
+                    <span id="NextTimeDaysContainer"> dage</span>
+                    <span id="commaBeforeHours">, </span>
+                </li>
+                <li>
+                    <span id="NextTimeHours" class="clock">0</span>
+                    <span id="NextTimeHoursContainer">timer</span>
+                    <span id="commaBeforeMinutes">,</span>
+                </li>
+                <li>
+                    <span id="NextTimeMinutes" class="clock">0</span>
+                    <span id="NextTimeMinutesContainer">minuter</span>
+                    <span id="commaBeforeSeconds"> og</span>
+                </li>
+                <li>
+                    <span id="NextTimeSeconds" class="clock">00</span>
+                    <span id="NextTimeSecondsContainer">sekunder</span>
+                </li>
+            </ul>
             
         </time>
         <time class="border hidden" id="notAnymoreToday">

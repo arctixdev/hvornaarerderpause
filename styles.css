@@ -96,7 +96,7 @@ time {
         animation: blink 1s steps(1, start) infinite;
 }
 
-@-webkit-keyframes hidden
+@keyframes hidden
 {
   from
   {
@@ -140,4 +140,8 @@ time {
   left: 85vw;
   text-align: center;
   background-color: rgb(94, 52, 192);
+}
+
+#timeTilNextList {
+  list-style: none;
 }
